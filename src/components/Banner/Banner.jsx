@@ -1,5 +1,6 @@
 import { Container, Typography, makeStyles } from '@material-ui/core'
 import React from 'react'
+import Carousel from './Carousel';
 
 const useStyles = makeStyles(() => ({
     banner: {
@@ -48,6 +49,7 @@ const Banner = () => {
             Get the price and performance of your favorite crypto coins
           </Typography>
               </div>
+              <Carousel/>
 
       </Container>
     </div>

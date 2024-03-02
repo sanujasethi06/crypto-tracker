@@ -10,7 +10,10 @@ const useStyles = makeStyles(() => ({
     fontFamily: "Montserrat",
     fontWeight: "bold",
     cursor: "pointer",
-  },
+    },
+    navBar: {
+        background: "#031142"
+    }
 }));
 const Header = () => {
     const classes = useStyles();
@@ -27,7 +30,7 @@ const Header = () => {
     return (
       <ThemeProvider theme={darkTheme}>
             
-      <AppBar color='transparent' position='static'>
+      <AppBar className={classes.navBar} position='static'>
           <Container>
               <Toolbar>
                   <Typography variant="h4" onClick={()=> navigate("/")} className={classes.title}>CryptoPulse</Typography>

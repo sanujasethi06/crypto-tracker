@@ -1,7 +1,6 @@
 import { makeStyles } from "@material-ui/core";
  
-const SelectButton = ({ children, selected, onClick }) => {
- const useStyles = makeStyles({
+const useStyles = makeStyles({
     selectbutton: {
       border: "1px solid gold",
       borderRadius: 5,
@@ -10,9 +9,7 @@ const SelectButton = ({ children, selected, onClick }) => {
       paddingRight: 20,
       fontFamily: "Montserrat",
       cursor: "pointer",
-      backgroundColor: selected ? "gold" : "",
-      color: selected ? "black" : "",
-      fontWeight: selected ? 700 : 500,
+     
       "&:hover": {
         backgroundColor: "gold",
         color: "black",
@@ -21,8 +18,12 @@ const SelectButton = ({ children, selected, onClick }) => {
       //   margin: 5,
     },
   });
+const SelectButton = ({ children, selected, onClick }) => {
+ 
 
-  const classes = useStyles();
+  const classes = useStyles({ backgroundColor: selected ? "gold" : "",
+      color: selected ? "black" : "",
+      fontWeight: selected ? 700 : 500,});
 
   return (
     <span onClick={onClick} className={classes.selectbutton}>

@@ -5,6 +5,7 @@ import { TrendingCoins } from '../../config/apis';
 import { CryptoState } from '../../cryptoContext';
 import AliceCarousel from 'react-alice-carousel';
 import { Link } from 'react-router-dom';
+import { numberWithCommas } from '../CoinListTable';
 const useStyles = makeStyles(() => ({
     carousel: {
         height: '50%',
@@ -20,9 +21,7 @@ const useStyles = makeStyles(() => ({
       color: "white",
     },
 }));
-export function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+
 
 const Carousel = () => {
     const [trending, setTrending] = useState([]);

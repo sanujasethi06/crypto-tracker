@@ -5,8 +5,12 @@ import axios from 'axios';
 import { Container, LinearProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, ThemeProvider, Typography, createTheme, makeStyles } from '@material-ui/core';
 import { CoinList } from '../config/apis';
 import { useNavigate } from 'react-router-dom';
-import { numberWithCommas } from './Banner/Carousel';
+
 import { Pagination } from '@material-ui/lab';
+
+export function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 const useStyles = makeStyles({
     row: {
       backgroundColor: "#16171a",

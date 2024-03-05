@@ -7,7 +7,21 @@ import { CoinList } from '../config/apis';
 import { useNavigate } from 'react-router-dom';
 import { numberWithCommas } from './Banner/Carousel';
 import { Pagination } from '@material-ui/lab';
-
+const useStyles = makeStyles({
+    row: {
+      backgroundColor: "#16171a",
+      cursor: "pointer",
+      "&:hover": {
+        backgroundColor: "#131111",
+      },
+      fontFamily: "Montserrat",
+    },
+    pagination: {
+      "& .MuiPaginationItem-root": {
+        color: "#ccf381",
+      },
+    },
+  });
 const CoinListTable = () => {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState();
@@ -16,27 +30,12 @@ const CoinListTable = () => {
   const { currency,symbol } = CryptoState();
   const navigate = useNavigate();
 
-  // const useStyles = makeStyles({
-  //   row: {
-  //     backgroundColor: "#16171a",
-  //     cursor: "pointer",
-  //     "&:hover": {
-  //       backgroundColor: "#131111",
-  //     },
-  //     fontFamily: "Montserrat",
-  //   },
-  //   pagination: {
-  //     "& .MuiPaginationItem-root": {
-  //       color: "#ccf381",
-  //     },
-  //   },
-  // });
-  // const classes = useStyles();
+  
+   const classes = useStyles();
   const fetchCoins = async () => {
     setLoading(true);
     const { data } = await axios.get(CoinList(currency));
     setCoins(data);
-    console.log(data);
     setLoading(false);
   };
 
@@ -79,7 +78,7 @@ const CoinListTable = () => {
         </TextField>
          <TableContainer component={Paper}>
           {loading ? (
-            <LinearProgress style={{ backgroundColor: "gold" }} />
+            <LinearProgress style={{ backgroundColor: "#ccf381" }} />
           ) : (
             <Table aria-label="simple table">
               <TableHead style={{ backgroundColor: "#EEBC1D" }}>
@@ -108,8 +107,8 @@ const CoinListTable = () => {
                     return (
                       <TableRow
                         onClick={() => navigate(`/coins/${row.id}`)}
-                        // className={classes.row}
-                        key={row.name}
+                         className={classes.row}
+                        key={row.symbol}
                       >
                         <TableCell
                           component="th"
@@ -179,7 +178,7 @@ const CoinListTable = () => {
             display: "flex",
             justifyContent: "center",
           }}
-          // classes={{ ul: classes.pagination }}
+           classes={{ ul: classes.pagination }}
           onChange={(_, value) => {
             setPage(value);
             window.scroll(0, 450);
